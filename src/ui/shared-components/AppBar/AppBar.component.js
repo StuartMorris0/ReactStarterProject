@@ -56,6 +56,9 @@ const TopAppBar = () => {
             <StyledLink component={RouterLink} to="/redux" exact>
               Redux
             </StyledLink>
+            <StyledLink component={RouterLink} to="/redux-api" exact>
+              Redux API
+            </StyledLink>
             <StyledLink component={RouterLink} to="/profile" exact>
               Profile
             </StyledLink>

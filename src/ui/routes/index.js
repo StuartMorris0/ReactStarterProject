@@ -4,6 +4,7 @@ import Home from './home';
 import Login from './login';
 import NotFound from './notfound';
 import Redux from './redux';
+import ReduxApi from './redux-api';
 import Profile from './profile';
 import UIPage from './ui';
 
@@ -14,6 +15,7 @@ const routes = (
       <Route exact path="/profile" component={Profile} />
       <Route exact path="/ui" component={UIPage} />
       <Route exact path="/redux" component={Redux} />
+      <Route exact path="/redux-api" component={ReduxApi} />
       <Route exact path="/login" component={Login} />
       <Route path="*" component={NotFound} />
     </Switch>
