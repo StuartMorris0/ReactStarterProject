@@ -17,11 +17,6 @@ const Redux = () => {
           boilerplate code and allows for quicker Redux development.
         </Text>
       </Box>
-      <Box mb={1}>
-        <Text color="primary">
-          <strong>To be styled... give it time...</strong>
-        </Text>
-      </Box>
       <Box>
         <Text>
           We use the Counter example provided with the toolkit usage guide just

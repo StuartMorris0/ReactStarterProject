@@ -1,59 +1,118 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components/macro';
+
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
+import Divider from '@material-ui/core/Divider';
+import TextField from '@material-ui/core/TextField';
 
-const CounterComponent = (props) => {
-  const {
-    count,
-    incrementAmount,
-    setIncrementAmount,
-    onIncrementClick,
-    onDecrementClick,
-    onIncrementByAmount,
-    onIncrementAsync,
-  } = props;
+const StyledButton = styled(Button)`
+  font-size: 1.2rem;
+`;
+
+const IncrementButton = styled(StyledButton)`
+  background-color: whitesmoke;
+`;
+
+const StyledInput = styled(TextField)`
+  & input {
+    text-align: center;
+    font-size: 1.4rem;
+  }
+`;
+const CounterComponent = ({
+  count,
+  incrementAmount,
+  setIncrementAmount,
+  onIncrementClick,
+  onDecrementClick,
+  onIncrementByAmount,
+  onIncrementAsync,
+}) => {
+  function updateInputValue(value) {
+    if (!isNaN(value)) {
+      setIncrementAmount(value);
+    }
+  }
+
   return (
     <div>
-      <div>
-        <Box m={2}>
-          <Button
-            variant="outlined"
-            className="align-self-center"
-            onClick={onIncrementClick}
-          >
-            +
-          </Button>
+      <Box display="flex" alignItems="center" justifyContent="center" mt={5}>
+        <Box m={2} display="flex">
+          <Box alignSelf="center">
+            <StyledButton
+              variant="contained"
+              color="primary"
+              onClick={onIncrementClick}
+              disableElevation
+            >
+              +
+            </StyledButton>
+          </Box>
           <Box
             p={2}
             m={2}
             pl={4}
             pr={4}
+            fontSize={40}
+            borderRadius="50%"
             component="span"
-            color="white"
-            bgcolor="primary.main"
+            color="black"
+            bgcolor="whitesmoke"
           >
             <span>{count}</span>
           </Box>
-
-          <Button
-            variant="outlined"
-            className="align-self-center"
-            onClick={onDecrementClick}
-          >
-            -
-          </Button>
+          <Box alignSelf="center">
+            <StyledButton
+              variant="contained"
+              color="secondary"
+              disableElevation
+              onClick={onDecrementClick}
+            >
+              -
+            </StyledButton>
+          </Box>
         </Box>
-      </div>
-      <div className="justify-content-md-center">
-        <input
-          aria-label="Set increment amount"
-          value={incrementAmount}
-          onChange={(e) => setIncrementAmount(e.target.value)}
-        />
-        <Button onClick={onIncrementByAmount}>Add Amount</Button>
-        <Button onClick={onIncrementAsync}>Add Async</Button>
-      </div>
+      </Box>
+      <Divider />
+      <Box
+        mb={5}
+        mt={5}
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Box display="flex">
+          <Box mr={2} ml={2} alignSelf="center">
+            <IncrementButton
+              onClick={onIncrementByAmount}
+              variant="contained"
+              disableElevation
+            >
+              Add Amount
+            </IncrementButton>
+          </Box>
+          <Box mr={2} ml={2} alignSelf="center">
+            <StyledInput
+              aria-label="Set increment amount"
+              value={incrementAmount}
+              onChange={(e) => updateInputValue(e.target.value)}
+              variant="outlined"
+              label="Increment Amount"
+            />
+          </Box>
+          <Box m={2}>
+            <IncrementButton
+              onClick={onIncrementAsync}
+              variant="contained"
+              disableElevation
+            >
+              Add Async
+            </IncrementButton>
+          </Box>
+        </Box>
+      </Box>
     </div>
   );
 };
